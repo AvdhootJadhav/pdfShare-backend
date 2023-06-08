@@ -29,10 +29,6 @@ public class PersonController {
 		return "Hello user";
 	}
 	
-	@PostMapping("/new")
-	public String addNewPerson(@RequestBody Person person) {
-		return personService.addNewPerson(person);
-	}
 	
 	@GetMapping("/all")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -43,6 +39,11 @@ public class PersonController {
 	@PostMapping("/login")
 	public LoginResponse login(@RequestBody LoginRequest loginRequest) {
 		return personService.login(loginRequest);
+	}
+	
+	@PostMapping("/register")
+	public String register(@RequestBody Person person) {
+		return personService.register(person);
 	}
 	
 }

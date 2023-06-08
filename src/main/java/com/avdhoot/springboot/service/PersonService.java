@@ -22,12 +22,6 @@ public class PersonService {
 	@Autowired
 	private PersonRepository personRepository;
 
-	public String addNewPerson(Person person) {
-		person.setPassword(passwordEncoder.encode(person.getPassword()));
-		personRepository.save(person);
-		return "User added";
-	}
-
 	public List<Person> getPersons() {
 		return personRepository.findAll();
 	}
@@ -45,6 +39,14 @@ public class PersonService {
 		}
 		
 		return null;
+	}
+
+	public String register(Person person) {
+		person.setPassword(passwordEncoder.encode(person.getPassword()));
+		System.out.println(person);
+		personRepository.save(person);
+		
+		return "\"User registered\"";
 	}
 	
 	
